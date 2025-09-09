@@ -1,0 +1,16 @@
+{
+  "light": {
+    "primary": "#D97706",
+    "secondary": "#FBBF24",
+    "accent": "#6366F1",
+    "text": "#1C1917",
+    "background": "#FFFBEB"
+  },
+  "dark": {
+    "primary": "#FACC15",
+    "secondary": "#B45309",
+    "accent": "#818CF8",
+    "text": "#F5F5F4",
+    "background": "#0F0F0F"
+  }
+}
