@@ -14,6 +14,7 @@ function Navbar() {
   });
 
   return (
+    
     <nav
       style={{
         backgroundColor: colors.background,
@@ -21,8 +22,9 @@ function Navbar() {
         borderBottom: `2px solid ${colors.primary}`,
         transition: "background 0.3s, color 0.3s"
       }}
-      className="flex items-center justify-between px-6 py-4 shadow-lg"
+      className="shadow-lg"
     >
+      <div className="max-w-6xl mx-auto px-4 flex items-center justify-between py-4">
       {/* Logo */}
       <div className="font-bold text-2xl tracking-wide" style={{ color: colors.primary }}>
         MD Yasin
@@ -32,7 +34,7 @@ function Navbar() {
       <ul className="hidden md:flex gap-8 font-medium items-center">
         <li>
           <NavLink
-            to="/"
+            to="/hero"
             style={getLinkStyle}
             className="hover:text-[var(--color-accent)] transition"
             end
@@ -126,6 +128,7 @@ function Navbar() {
           {theme === "light" ? "🌙 Dark" : "☀️ Light"}
         </button>
       </div>
+     </div>
     </nav>
   );
 }
