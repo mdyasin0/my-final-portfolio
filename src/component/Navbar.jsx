@@ -87,30 +87,32 @@ function Navbar() {
             Contact
           </NavLink>
         </li>
+       
       </ul>
 
       {/* Resume Button & Theme Toggle */}
       <div className="flex items-center gap-4">
-        <a
-          href="/resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          download
-          style={{
-            background: colors.primary,
-            color: colors.background,
-            borderRadius: "999px",
-            padding: "0.5rem 1.2rem",
-            fontWeight: "bold",
-            boxShadow: `0 2px 8px ${colors.secondary}55`,
-            border: "none",
-            textDecoration: "none",
-            transition: "background 0.3s, color 0.3s"
-          }}
-          className="hover:bg-[var(--color-accent)] hover:text-white transition"
-        >
-          My Resume
-        </a>
+    <a
+  href="/resume.pdf"
+  target="_blank"
+  rel="noopener noreferrer"
+  style={{
+    background: colors.primary,
+    color: colors.background,
+    borderRadius: "999px",
+    padding: "0.5rem 1.2rem",
+    fontWeight: "bold",
+    boxShadow: `0 2px 8px ${colors.secondary}55`,
+    border: "none",
+    textDecoration: "none",
+    transition: "background 0.3s, color 0.3s"
+  }}
+  className="hover:bg-[var(--color-accent)] hover:text-white transition"
+>
+  My Resume
+</a>
+
+
         <button
           onClick={toggleTheme}
           style={{

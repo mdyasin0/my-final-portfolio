@@ -1,0 +1,94 @@
+[
+  {
+    "id": "689a4550e7ef8d3872ac428f",
+    "title": "Micro-Task and Earning Platform",
+    "live_link": "https://coin-crafter-c3107.web.app/",
+    "github_link": "https://github.com/Programming-Hero-Web-Course4/b11a12-client-side-mdyasin0",
+    "image_link": "https://i.ibb.co.com/TBswyyxS/Screenshot.png",
+    "features": [
+      "Role-based Authentication with Google and Email+Password for Worker, Buyer, and Admin",
+      "Separate dashboards for Worker, Buyer, and Admin with functionalities like Task Management, Coin Withdrawal, Payment History, etc.",
+      "Secure Stripe Payment Integration (Test Mode) for Coin Purchase and Payment management"
+    ],
+    "technology_stack": {
+      "frontend": ["Vite", "React.js", "React Router", "Swiper", "AOS", "React Icons", "Tailwind CSS", "DaisyUI", "Axios", "SweetAlert2"],
+      "backend": ["Express.js", "MongoDB", "dotenv", "cors", "Stripe Payment Integration"]
+    },
+    "description": "A complete MERN stack micro-task and earning platform with three user roles — Worker, Buyer, and Admin. Users can post tasks, complete them, and earn virtual coins which can later be converted into real money. The platform facilitates smooth task exchange and coin management.",
+    "challenges": [
+      "Complex role-based authentication and permission management for Worker, Buyer, and Admin",
+      "Implementing real-time coin economy (coin credit, debit, auto refill)",
+      "Secure Stripe payment integration and setting up payment gateway in test mode",
+      "Designing a multi-role responsive dashboard for all devices",
+      "Task creation and user registration with image upload (imgBB)"
+    ]
+  },
+  {
+    "id": "689a4550e7ef8d3872ac4290",
+    "title": "Historical Artifacts Tracker",
+    "live_link": "https://assignment-11-1588b.web.app/",
+    "github_link": "https://github.com/Programming-Hero-Web-Course4/b11a11-client-side-mdyasin0",
+    "image_link": "https://i.ibb.co.com/HZTvPYL/Screenshot-2.png",
+    "features": [
+      "Firebase Authentication (Email/Password and Google login)",
+      "CRUD operations (Add, Update, Delete) for personal artifacts",
+      "JWT-protected private routes and secure data access"
+    ],
+    "technology_stack": {
+      "frontend": ["React", "Vite", "Tailwind CSS", "DaisyUI", "Firebase"],
+      "backend": ["Node.js", "Express", "MongoDB", "JWT Authentication"]
+    },
+    "description": "Historical Artifacts Tracker is a full-stack web app that allows users to search, like, add, and manage historical artifacts. It is an educational and interactive platform where users can access detailed information about famous artifacts and contribute their own data. JWT-based secure login is implemented.",
+    "challenges": [
+      "Secure authentication and authorization with JWT and cookie management",
+      "Data synchronization and real-time UI updates between frontend and backend",
+      "Responsive design across devices (mobile, tablet, desktop)",
+      "Protecting individual user data with private routes"
+    ]
+  },
+  {
+    "id": "689a4550e7ef8d3872ac4291",
+    "title": "Roommate Finder",
+    "live_link": "https://chimerical-frangollo-6b3418.netlify.app/",
+    "github_link": "https://github.com/Programming-Hero-Web-Course4/b11a10-client-side-mdyasin0",
+    "image_link": "https://i.ibb.co.com/BKGVSBxm/Screenshot-3.png",
+    "features": [
+      "User Authentication using Firebase (Login/Registration)",
+      "CRUD functionalities for roommate listings",
+      "Fully responsive design for all devices"
+    ],
+    "technology_stack": {
+      "frontend": ["Vite", "React.js", "Tailwind CSS", "DaisyUI", "Firebase"],
+      "backend": ["Node.js", "Express.js", "MongoDB"]
+    },
+    "description": "Roommate Finder is a full web platform helping users find ideal roommates based on location, rent, and preferences. It simplifies and speeds up the roommate searching process.",
+    "challenges": [
+      "Responsive UI with Swiper, Lottie, Typewriter effects across devices",
+      "Synchronizing Firebase Authentication with MongoDB securely",
+      "Protected routes with user authorization",
+      "Balancing real-time data handling and user interaction for CRUD"
+    ]
+  },
+  {
+    "id": "689b13cf438b9d8ab49ea4aa",
+    "title": "Event Explorer",
+    "live_link": "https://jolly-begonia-02f8f2.netlify.app/",
+    "github_link": "https://github.com/programming-hero-web-course1/b11a9-react-authentication-mdyasin0",
+    "image_link": "https://i.ibb.co.com/HDpwVbPK/Screenshot-4.png",
+    "features": [
+      "User login and registration via Email and Google Authentication",
+      "Detailed event pages accessible only to authorized users (Protected Routing)",
+      "Fully responsive design for all screen sizes"
+    ],
+    "technology_stack": {
+      "frontend": ["React", "Firebase", "Tailwind CSS", "DaisyUI", "Vite"],
+      "backend": []
+    },
+    "description": "Event Explorer is an event browsing and management web app where users can view, register, and book events. It uses secure authentication and protected routes, providing a user-friendly and responsive experience.",
+    "challenges": [
+      "Proper protected routing and authentication for event details",
+      "Full responsiveness across devices and screen sizes",
+      "Integrating Email and Google Sign-In smoothly with Firebase"
+    ]
+  }
+]

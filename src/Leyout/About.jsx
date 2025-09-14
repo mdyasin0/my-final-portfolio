@@ -43,7 +43,7 @@ function About() {
             }}
           >
             <img
-              src="src/assets/myimage.png"
+              src="/myimage.png"
               alt="MD Yasin"
               className="object-cover w-full h-[420px] rounded-tl-[70px] rounded-br-[70px] shadow-lg"
             />
@@ -100,7 +100,7 @@ function About() {
             </button>
 
             <a
-              href="/blog/programming-hero-experience"
+              href="/blog"
               style={{
                 background: colors.accent,
                 color: colors.background,
@@ -142,7 +142,7 @@ function About() {
             </h2>
 
             <img
-              src="src/assets/certificate (1).jpg"
+              src="/certificate (1).jpg"
               alt="Certificate"
               className="w-full rounded-xl shadow-lg border-2"
               style={{ borderColor: colors.primary }}

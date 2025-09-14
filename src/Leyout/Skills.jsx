@@ -1,5 +1,6 @@
 // Skills.jsx
 import React, { useContext } from "react";
+import { useNavigate } from "react-router";
 import { ColorContext } from "../Color/ColorContext";
 import {
   FaHtml5,
@@ -14,37 +15,38 @@ import { SiTailwindcss, SiExpress, SiMongodb, SiFirebase, SiVite } from "react-i
 
 const Skills = () => {
   const { colors } = useContext(ColorContext);
+  const navigate = useNavigate();
 
   const skillsData = [
     {
       category: "Frontend",
       skills: [
-        { name: "HTML", icon: <FaHtml5 /> },
-        { name: "CSS", icon: <FaCss3Alt /> },
-        { name: "Tailwind CSS", icon: <SiTailwindcss /> },
-        { name: "JavaScript", icon: <FaJsSquare /> },
-        { name: "React", icon: <FaReact /> }
+        { name: "HTML", icon: <FaHtml5 />, blogRoute: "/bloglayout/html" },
+        { name: "CSS", icon: <FaCss3Alt />, blogRoute: "/bloglayout/css" },
+        { name: "Tailwind CSS", icon: <SiTailwindcss />, blogRoute: "/bloglayout/tailwind-css" },
+        { name: "JavaScript", icon: <FaJsSquare />, blogRoute: "/bloglayout/javascript" },
+        { name: "React", icon: <FaReact />, blogRoute: "/bloglayout/react" }
       ]
     },
     {
       category: "Backend",
       skills: [
-        { name: "Node.js", icon: <FaNodeJs /> },
-        { name: "Express.js", icon: <SiExpress /> }
+        { name: "Node.js", icon: <FaNodeJs />, blogRoute: "/bloglayout/node.js" },
+        { name: "Express.js", icon: <SiExpress />, blogRoute: "/bloglayout/express.js" }
       ]
     },
     {
       category: "Database",
       skills: [
-        { name: "MongoDB", icon: <SiMongodb /> }
+        { name: "MongoDB", icon: <SiMongodb />, blogRoute: "/bloglayout/mongodb" }
       ]
     },
     {
       category: "Tools",
       skills: [
-        { name: "Firebase", icon: <SiFirebase /> },
-        { name: "Git", icon: <FaGitAlt /> },
-        { name: "Vite", icon: <SiVite /> }
+        { name: "Firebase", icon: <SiFirebase />, blogRoute: "/bloglayout/firebase" },
+        { name: "Git", icon: <FaGitAlt />, blogRoute: "/bloglayout/git" },
+        { name: "Vite", icon: <SiVite />, blogRoute: "/bloglayout/vite" }
       ]
     }
   ];
@@ -80,7 +82,8 @@ const Skills = () => {
                 {section.skills.map((skill) => (
                   <li
                     key={skill.name}
-                    className="flex items-center gap-3 px-4 py-2 rounded-full font-medium text-lg hover:scale-110 transform transition"
+                    onClick={() => navigate(skill.blogRoute)}
+                    className="flex items-center gap-3 px-4 py-2 rounded-full font-medium text-lg cursor-pointer hover:scale-110 transform transition"
                     style={{ background: colors.primary, color: colors.background }}
                   >
                     <span className="text-2xl">{skill.icon}</span>

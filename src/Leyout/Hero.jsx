@@ -33,7 +33,7 @@ function Hero() {
             I craft dynamic and user-friendly web applications with the MERN stack, delivering efficient and scalable solutions that help businesses thrive online.
           </p>
           <a
-            href="#contact"
+            href="/contact"
             style={{
               background: colors.primary,
               color: colors.background,
@@ -57,7 +57,7 @@ function Hero() {
             style={{ border: `4px solid ${colors.primary}` }}
           >
             <img
-              src="src/assets/myimage.png"
+              src="/myimage.png"
               alt="MD Yasin"
               className=" rounded-bl-[50%] w-68 h-68 object-cover border-4  shadow-lg"
             />
