@@ -10,12 +10,15 @@ export const ColorProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetch("/Colors.json")
+    fetch("http://localhost:3000/colors")
       .then((res) => res.json())
       .then((data) => {
-       
-        setColors(data[theme]);
-      });
+        
+        if (data.length > 0) {
+          setColors(data[0][theme]); 
+        }
+      })
+      .catch((err) => console.error("Error fetching colors:", err));
   }, [theme]);
 
   useEffect(() => {
@@ -25,7 +28,7 @@ export const ColorProvider = ({ children }) => {
   }, [colors]);
 
   return (
-    <ColorContext.Provider value={{ colors, theme, toggleTheme }}>
+    <ColorContext.Provider value={{ colors,setColors, theme, toggleTheme }}>
       {children}
     </ColorContext.Provider>
   );

@@ -20,6 +20,8 @@ import GitBlog from "../Leyout/tecnologyblog/GitBlog";
 import ViteBlog from "../Leyout/tecnologyblog/ViteBlog";
 import NodeBlog from "../Leyout/tecnologyblog/NodeBlog";
 import ExpressBlog from "../Leyout/tecnologyblog/ExpressBlog";
+import DashboardLayout from "../Dashboard/Dashboardlayout";
+import ColorPage from "../Dashboard/ColorPage";
 
 
 const Router = createBrowserRouter([
@@ -72,6 +74,16 @@ const Router = createBrowserRouter([
           { path: "vite", element: <ViteBlog /> },
         ],
       },
+      {
+        path: "/dashboardlayout" ,
+        element: <DashboardLayout/> ,
+        children : [
+          {
+            path: '/dashboardlayout/colorpage' ,
+            element : <ColorPage/> ,
+          }
+        ]
+      }
     ]
   },{
     path:"*",

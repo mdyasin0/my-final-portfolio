@@ -11,6 +11,7 @@ function App() {
   return (
     <>
    <Navbar/>
+    <main className="pt-16"></main>
    <Outlet/>
    <LoginPopup />
    <Footer/>
