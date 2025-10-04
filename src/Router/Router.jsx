@@ -22,37 +22,50 @@ import NodeBlog from "../Leyout/tecnologyblog/NodeBlog";
 import ExpressBlog from "../Leyout/tecnologyblog/ExpressBlog";
 import DashboardLayout from "../Dashboard/Dashboardlayout";
 import ColorPage from "../Dashboard/ColorPage";
+import ResumeUpdater from "../Dashboard/Resume";
+import ProjectsDashboard from "../Dashboard/projectmanage";
+import Projectupdate from "../Dashboard/ProjectDetails";
+import ProjectDetails from "../Leyout/projectdetails";
 
 
 const Router = createBrowserRouter([
   {
     path: "/",
-    element : <App/>,
-    children : [
-      { index: true, element : <Hero /> },
-      {path: "/hero",
-        element: <Hero />,
-      },{
-        path: "/about" ,
-        element : <About/>,
-      },{
-        path: "/authForm" ,
-        element : <AuthForm/>,
-      },{
-        path:"/contact" ,
-        element : <Contact/>,
-      },{
-        path: "/skills" ,
-        element: <Skills/> ,
-      },{
+    element: <App />,
+    children: [
+      { index: true, element: <Hero /> },
+      { path: "/hero", element: <Hero /> },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/authForm",
+        element: <AuthForm />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/skills",
+        element: <Skills />,
+      },
+      {
         path: "/projects",
-        element: <Projects/> ,
-      },{
-        path: "/blog" ,
-        element: <Blog/> ,
-      },  {
+        element: <Projects />,
+      },
+      {
+        path: "/projectdetails/:id" ,
+        element : <ProjectDetails/>
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
+      },
+      {
         path: "/bloglayout",
-        element: <BlogLayout />, 
+        element: <BlogLayout />,
         children: [
           // Frontend
           { path: "html", element: <HtmlBlog /> },
@@ -62,7 +75,7 @@ const Router = createBrowserRouter([
           { path: "react", element: <ReactBlog /> },
 
           // Backend
-          { path: "node.js", element: <NodeBlog/> },
+          { path: "node.js", element: <NodeBlog /> },
           { path: "express.js", element: <ExpressBlog /> },
 
           // Database
@@ -75,21 +88,33 @@ const Router = createBrowserRouter([
         ],
       },
       {
-        path: "/dashboardlayout" ,
-        element: <DashboardLayout/> ,
-        children : [
+        path: "/dashboardlayout",
+        element: <DashboardLayout />,
+        children: [
           {
-            path: '/dashboardlayout/colorpage' ,
-            element : <ColorPage/> ,
-          }
-        ]
-      }
-    ]
-  },{
-    path:"*",
-    element: <ErrorPage/>
-  }
+            path: "/dashboardlayout/colorpage",
+            element: <ColorPage />,
+          },
+          {
+            path: "/dashboardlayout/resumeupdater",
+            element: <ResumeUpdater />,
+          },
+          {
+            path: "/dashboardlayout/projectsdashboard",
+            element: <ProjectsDashboard />,
+          },
+          {
+            path: "/dashboardlayout/projectsdashboard/:id",
+            element: <Projectupdate />,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: "*",
+    element: <ErrorPage />,
+  },
 ]);
-
 
 export default Router;

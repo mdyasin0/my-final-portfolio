@@ -1,13 +1,14 @@
 import React, { useEffect, useState, useContext } from "react";
+import { useNavigate } from "react-router";
 import { ColorContext } from "../Color/ColorContext";
 
 const Projects = () => {
   const { colors } = useContext(ColorContext);
   const [projects, setProjects] = useState([]);
+  const navigate = useNavigate();
 
-  // Fetch projects data from local JSON / API
   useEffect(() => {
-    fetch("/project.json")
+    fetch("http://localhost:3000/projects") 
       .then((res) => res.json())
       .then((data) => setProjects(data))
       .catch((err) => console.error("Error fetching projects:", err));
@@ -27,24 +28,21 @@ const Projects = () => {
           My Projects
         </h2>
 
-        {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <div
-              key={project.id}
+              key={project._id}
               className="rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 overflow-hidden"
               style={{ background: colors.secondary }}
             >
-              {/* Project Image */}
               <div className="relative group">
                 <img
-                  src={project.image_link}
+                  src={project.image}
                   alt={project.title}
-                  className="w-full   group-hover:scale-110 transition duration-500"
+                  className="w-full group-hover:scale-110 transition duration-500"
                 />
               </div>
 
-              {/* Project Content */}
               <div className="p-6 flex flex-col items-center">
                 <h3
                   className="text-2xl font-semibold mb-4 text-center"
@@ -53,10 +51,8 @@ const Projects = () => {
                   {project.title}
                 </h3>
 
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  onClick={() => navigate(`/projectdetails/${project._id}`)}
                   style={{
                     background: colors.primary,
                     color: colors.background,
@@ -69,7 +65,7 @@ const Projects = () => {
                   className="hover:bg-[var(--color-accent)] hover:text-white transition"
                 >
                   View Details
-                </a>
+                </button>
               </div>
             </div>
           ))}

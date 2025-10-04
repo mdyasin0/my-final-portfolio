@@ -6,7 +6,19 @@ function Navbar() {
   const { colors, theme, toggleTheme } = useContext(ColorContext);
   const [hidden, setHidden] = useState(false);
   const lastScrollY = useRef(0); // useRef keeps value without re-render
+  const [resumeLink, setResumeLink] = useState(""); // state for resume
 
+  // fetch resume link from backend
+  useEffect(() => {
+    fetch("http://localhost:3000/resume")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.link) {
+          setResumeLink(data.link);
+        }
+      })
+      .catch((err) => console.error("Error fetching resume link:", err));
+  }, []);
   const getLinkStyle = ({ isActive }) => ({
     color: isActive ? colors.accent : colors.text,
     fontWeight: isActive ? "bold" : "normal",
@@ -65,24 +77,29 @@ function Navbar() {
           <li><NavLink to="/contact" style={getLinkStyle} className="hover:text-[var(--color-accent)] transition">Contact</NavLink></li>
         </ul>
 
-        {/* Resume & Theme */}
+          {/* Resume & Theme */}
         <div className="flex items-center gap-4">
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer"
-             style={{
-               background: colors.primary,
-               color: colors.background,
-               borderRadius: "999px",
-               padding: "0.5rem 1.2rem",
-               fontWeight: "bold",
-               boxShadow: `0 2px 8px ${colors.secondary}55`,
-               border: "none",
-               textDecoration: "none",
-               transition: "background 0.3s, color 0.3s"
-             }}
-             className="hover:bg-[var(--color-accent)] hover:text-white transition"
-          >
-            My Resume
-          </a>
+          {resumeLink && (
+            <a
+              href={resumeLink} // backend থেকে আসা link use হচ্ছে এখানে
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                background: colors.primary,
+                color: colors.background,
+                borderRadius: "999px",
+                padding: "0.5rem 1.2rem",
+                fontWeight: "bold",
+                boxShadow: `0 2px 8px ${colors.secondary}55`,
+                border: "none",
+                textDecoration: "none",
+                transition: "background 0.3s, color 0.3s"
+              }}
+              className="hover:bg-[var(--color-accent)] hover:text-white transition"
+            >
+              My Resume
+            </a>
+          )}
 
           <button
             onClick={toggleTheme}

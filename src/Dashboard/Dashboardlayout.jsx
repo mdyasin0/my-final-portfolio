@@ -39,6 +39,8 @@ function DashboardLayout() {
        
         <nav className="flex flex-col gap-2">
           <NavLink to="/dashboardlayout/colorpage" style={getLinkStyle}>Colors</NavLink>
+          <NavLink to="/dashboardlayout/resumeupdater" style={getLinkStyle}>Resume</NavLink>
+          <NavLink to="/dashboardlayout/projectsdashboard" style={getLinkStyle}>Projects-manage</NavLink>
           <NavLink to="/dashboard/projects" style={getLinkStyle}>Projects</NavLink>
           <NavLink to="/dashboard/skills" style={getLinkStyle}>Skills</NavLink>
           <NavLink to="/dashboard/messages" style={getLinkStyle}>Messages</NavLink>

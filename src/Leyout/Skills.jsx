@@ -1,5 +1,4 @@
-// Skills.jsx
-import React, { useContext } from "react";
+import React, { useContext, useState} from "react";
 import { useNavigate } from "react-router";
 import { ColorContext } from "../Color/ColorContext";
 import {
@@ -8,7 +7,6 @@ import {
   FaReact,
   FaNodeJs,
   FaGitAlt,
-  FaDatabase,
   FaJsSquare
 } from "react-icons/fa";
 import { SiTailwindcss, SiExpress, SiMongodb, SiFirebase, SiVite } from "react-icons/si";
@@ -16,6 +14,8 @@ import { SiTailwindcss, SiExpress, SiMongodb, SiFirebase, SiVite } from "react-i
 const Skills = () => {
   const { colors } = useContext(ColorContext);
   const navigate = useNavigate();
+
+  const [showPopup, setShowPopup] = useState(true);
 
   const skillsData = [
     {
@@ -54,9 +54,29 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="py-16"
+      className="relative py-16 min-h-screen"
       style={{ background: colors.background, color: colors.text }}
     >
+      {/* Popup / Instruction */}
+      {showPopup && (
+        <div
+          className="fixed top-20 left-0 w-80 p-4 rounded-r-lg shadow-lg animate-slide-in"
+          style={{ background: colors.primary, color: colors.background, zIndex: 1000 }}
+        >
+          <h3 className="text-lg font-bold mb-2">Skill Instructions</h3>
+          <p className="text-sm">
+            If you want to know about any skill, click on its name.
+            You’ll get details about <strong>what</strong>, <strong>why</strong>, and <strong>how</strong>.
+          </p>
+          <button
+            className="mt-3 px-3 py-1 bg-white text-black rounded hover:bg-gray-200"
+            onClick={() => setShowPopup(false)}
+          >
+            Close
+          </button>
+        </div>
+      )}
+
       <div className="max-w-6xl mx-auto px-4">
         <h2
           className="text-4xl font-bold mb-12 text-center"
@@ -95,6 +115,19 @@ const Skills = () => {
           ))}
         </div>
       </div>
+
+      {/* Popup animation CSS */}
+      <style>
+        {`
+          @keyframes slide-in {
+            0% { transform: translateX(-100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+          }
+          .animate-slide-in {
+            animation: slide-in 0.5s ease-out forwards;
+          }
+        `}
+      </style>
     </section>
   );
 };
