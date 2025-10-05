@@ -25,9 +25,15 @@ const ProjectDetails = () => {
     );
 
   return (
-    <div style={{ backgroundColor: colors.background, width: "100%" }}>
+    <div
+      style={{
+        backgroundColor: colors.background,
+        color: colors.text,
+        minHeight: "100vh",
+      }}
+    >
       {/* MAIN CONTENT */}
-      <div className="max-w-5xl mx-auto p-6 shadow-xl rounded-lg">
+      <div className="max-w-6xl mx-auto p-6">
         {/* IMAGE */}
         <div className="mb-6">
           <img
@@ -48,20 +54,72 @@ const ProjectDetails = () => {
         {/* DESCRIPTION */}
         <p className="mb-6 text-lg leading-relaxed">{project.description}</p>
 
+        {/* FRONTEND TECH */}
+        {project.frontendTech?.length > 0 && (
+          <div className="mb-10">
+            <h3
+              className="text-3xl font-semibold mb-4 text-center"
+              style={{ color: colors.accent }}
+            >
+              Frontend Technologies
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+              {project.frontendTech.map((tech, i) => (
+                <div
+                  key={i}
+                  className="p-4 rounded-xl shadow-md text-center font-medium"
+                  style={{
+                    backgroundColor: colors.cardBg || colors.primary + "20",
+                    border: `1px solid ${colors.primary}`,
+                  }}
+                >
+                  {tech}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* BACKEND TECH */}
+        {project.backendTech?.length > 0 && (
+          <div className="mb-10">
+            <h3
+              className="text-3xl font-semibold mb-4 text-center"
+              style={{ color: colors.accent }}
+            >
+              Backend Technologies
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+              {project.backendTech.map((tech, i) => (
+                <div
+                  key={i}
+                  className="p-4 rounded-xl shadow-md text-center font-medium"
+                  style={{
+                    backgroundColor: colors.cardBg || colors.secondary + "20",
+                    border: `1px solid ${colors.secondary}`,
+                  }}
+                >
+                  {tech}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* BUTTON LINKS */}
-        <div className="flex flex-col gap-4 mb-8">
+        <div className="flex flex-wrap justify-center gap-4 mb-10">
           {project.liveLink && (
             <a
               href={project.liveLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3 rounded-lg text-center font-bold transition hover:opacity-90"
+              className="px-5 py-2 rounded-lg font-bold transition hover:opacity-90"
               style={{
                 backgroundColor: colors.primary,
                 color: colors.background,
               }}
             >
-              View Live Project
+              Live
             </a>
           )}
 
@@ -70,13 +128,13 @@ const ProjectDetails = () => {
               href={project.frontendGit}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3 rounded-lg text-center font-bold transition hover:opacity-90"
+              className="px-5 py-2 rounded-lg font-bold transition hover:opacity-90"
               style={{
                 backgroundColor: colors.accent,
                 color: colors.background,
               }}
             >
-              View Frontend Code
+              Frontend
             </a>
           )}
 
@@ -85,87 +143,57 @@ const ProjectDetails = () => {
               href={project.backendGit}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3 rounded-lg text-center font-bold transition hover:opacity-90"
+              className="px-5 py-2 rounded-lg font-bold transition hover:opacity-90"
               style={{
                 backgroundColor: colors.secondary,
                 color: colors.background,
               }}
             >
-              View Backend Code
+              Backend
             </a>
           )}
         </div>
 
-        {/* DETAILS GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {project.features?.length > 0 && (
-            <div>
-              <h3
-                className="text-2xl font-semibold mb-2"
-                style={{ color: colors.accent }}
-              >
-                Features
-              </h3>
-              <ul className="list-disc list-inside space-y-1">
-                {project.features.map((feature, i) => (
-                  <li key={i}>{feature}</li>
-                ))}
-              </ul>
-            </div>
-          )}
+       {/* FEATURES & CHALLENGES */}
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6 flex-wrap break-words">
+  {project.features?.length > 0 && (
+    <div className="break-words">
+      <h3
+        className="text-2xl font-semibold mb-2"
+        style={{ color: colors.accent }}
+      >
+        Features
+      </h3>
+      <ul className="list-disc list-inside space-y-1 break-words">
+        {project.features.map((feature, i) => (
+          <li key={i} className="break-words whitespace-normal">
+            {feature}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
 
-          {project.challenges?.length > 0 && (
-            <div>
-              <h3
-                className="text-2xl font-semibold mb-2"
-                style={{ color: colors.accent }}
-              >
-                Challenges
-              </h3>
-              <ul className="list-disc list-inside space-y-1">
-                {project.challenges.map((challenge, i) => (
-                  <li key={i}>{challenge}</li>
-                ))}
-              </ul>
-            </div>
-          )}
+  {project.challenges?.length > 0 && (
+    <div className="break-words">
+      <h3
+        className="text-2xl font-semibold mb-2"
+        style={{ color: colors.accent }}
+      >
+        Challenges
+      </h3>
+      <ul className="list-disc list-inside space-y-1 break-words">
+        {project.challenges.map((challenge, i) => (
+          <li key={i} className="break-words whitespace-normal">
+            {challenge}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</div>
 
-          {project.backendTech?.length > 0 && (
-            <div>
-              <h3
-                className="text-2xl font-semibold mb-2"
-                style={{ color: colors.accent }}
-              >
-                Backend Tech
-              </h3>
-              <ul className="list-disc list-inside space-y-1">
-                {project.backendTech.map((tech, i) => (
-                  <li key={i}>{tech}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
       </div>
-
-      {/* FRONTEND TECH FULL WIDTH SECTION */}
-      {project.frontendTech?.length > 0 && (
-        <div
-          className="w-full py-8"
-          style={{ backgroundColor: colors.accent }}
-        >
-          <div className="max-w-5xl mx-auto px-6">
-            <h3 className="text-3xl font-bold mb-4 text-white text-center">
-              Frontend Technologies
-            </h3>
-            <ul className="list-disc list-inside space-y-2 text-white text-lg">
-              {project.frontendTech.map((tech, i) => (
-                <li key={i}>{tech}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

@@ -26,6 +26,7 @@ import ResumeUpdater from "../Dashboard/Resume";
 import ProjectsDashboard from "../Dashboard/projectmanage";
 import Projectupdate from "../Dashboard/ProjectDetails";
 import ProjectDetails from "../Leyout/projectdetails";
+import UserDashboard from "../Dashboard/users";
 
 
 const Router = createBrowserRouter([
@@ -106,7 +107,10 @@ const Router = createBrowserRouter([
           {
             path: "/dashboardlayout/projectsdashboard/:id",
             element: <Projectupdate />,
-          },
+          },{
+            path: "/dashboardlayout/userdashboard" ,
+            element : <UserDashboard/>
+          }
         ],
       },
     ],

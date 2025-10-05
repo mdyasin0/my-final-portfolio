@@ -6,7 +6,7 @@ const AuthForm = () => {
   const { colors } = useContext(ColorContext);
   const { loginWithGoogle, loginWithEmail, registerWithEmail } = useContext(AuthContext);
 
-  const [isLogin, setIsLogin] = useState(false); // Toggle Login/Register
+  const [isLogin, setIsLogin] = useState(false); 
   const [showPassword, setShowPassword] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -19,6 +19,53 @@ const AuthForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const saveUserData = async (userData) => {
+    try {
+      const res = await fetch("http://localhost:3000/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userData),
+      });
+      return await res.json();
+    } catch (error) {
+      console.error("❌ Error saving user data:", error);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      const loggedInUser = await loginWithGoogle();
+
+      if (loggedInUser) {
+        const locationData = await fetch("http://localhost:3000/api/location").then(res => res.json());
+
+        const userData = {
+          name: loggedInUser.displayName || "No Name",
+          email: loggedInUser.email,
+          loginType: "google",
+          country: locationData.country_name || "Unknown",
+          location: `${locationData.city || ""}, ${locationData.region || ""}, ${locationData.country_name || ""}`,
+          deviceType: /Mobi|Android/i.test(navigator.userAgent)
+            ? "mobile"
+            : /Tablet|iPad/i.test(navigator.userAgent)
+            ? "tablet"
+            : "desktop",
+          deviceName: navigator.userAgent,
+          lastLogin: new Date().toISOString(),
+        };
+
+        const result = await saveUserData(userData);
+        if (result?.success) {
+          console.log("✅ Google user saved to DB");
+        } else {
+          console.error("❌ Failed to save Google user", result);
+        }
+      }
+    } catch (error) {
+      console.error("Google login failed:", error);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -26,7 +73,30 @@ const AuthForm = () => {
         await loginWithEmail(formData.email, formData.password);
       } else {
         await registerWithEmail(formData.email, formData.password);
-        // Optionally, update displayName here
+
+        const locationData = await fetch("http://localhost:3000/api/location").then(res => res.json());
+
+        const userData = {
+          name: formData.name,
+          email: formData.email,
+          loginType: "register",
+          country: locationData.country_name || "Unknown",
+          location: `${locationData.city || ""}, ${locationData.region || ""}, ${locationData.country_name || ""}`,
+          deviceType: /Mobi|Android/i.test(navigator.userAgent)
+            ? "mobile"
+            : /Tablet|iPad/i.test(navigator.userAgent)
+            ? "tablet"
+            : "desktop",
+          deviceName: navigator.userAgent,
+          lastLogin: new Date().toISOString(),
+        };
+
+        const result = await saveUserData(userData);
+        if (result?.success) {
+          console.log("✅ User registered and saved successfully");
+        } else {
+          console.error("❌ Failed to save user", result);
+        }
       }
     } catch (error) {
       console.error("Auth error:", error);
@@ -96,7 +166,7 @@ const AuthForm = () => {
           {isLogin && (
             <button
               type="button"
-              onClick={loginWithGoogle}
+              onClick={handleGoogleLogin}
               className="w-full py-3 rounded-full font-bold"
               style={{ background: colors.accent, color: colors.background }}
             >
