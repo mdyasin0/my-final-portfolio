@@ -8,7 +8,7 @@ const Projects = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:3000/projects") 
+    fetch("https://my-final-portfolio-server.vercel.app/projects") 
       .then((res) => res.json())
       .then((data) => setProjects(data))
       .catch((err) => console.error("Error fetching projects:", err));

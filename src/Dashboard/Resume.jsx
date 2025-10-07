@@ -8,7 +8,7 @@ function ResumeUpdater() {
 
   // Load existing resume link
   useEffect(() => {
-    fetch("http://localhost:3000/resume")
+    fetch("https://my-final-portfolio-server.vercel.app/resume")
       .then((res) => res.json())
       .then((data) => {
         if (data?.link) setResumeLink(data.link);
@@ -21,7 +21,7 @@ function ResumeUpdater() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:3000/resume", {
+      const res = await fetch("https://my-final-portfolio-server.vercel.app/resume", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

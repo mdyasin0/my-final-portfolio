@@ -18,7 +18,7 @@ const Projectupdate = () => {
   const [loading, setLoading] = useState(false);
 
   const loadProject = async () => {
-    const res = await fetch(`http://localhost:3000/projects/${id}`);
+    const res = await fetch(`https://my-final-portfolio-server.vercel.app/projects/${id}`);
     const data = await res.json();
     setProject(data);
   };
@@ -39,7 +39,7 @@ const Projectupdate = () => {
       updatedData[field] = value;
     }
 
-    await fetch(`http://localhost:3000/projects/${id}`, {
+    await fetch(`https://my-final-portfolio-server.vercel.app/projects/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedData),
@@ -55,7 +55,7 @@ const Projectupdate = () => {
     let updatedArray = project[field].filter((_, i) => i !== index);
     let updatedData = { [field]: updatedArray };
 
-    await fetch(`http://localhost:3000/projects/${id}`, {
+    await fetch(`https://my-final-portfolio-server.vercel.app/projects/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedData),
@@ -72,7 +72,7 @@ const Projectupdate = () => {
     const updatedArray = [...(project[field] || []), value];
     const updatedData = { [field]: updatedArray };
 
-    await fetch(`http://localhost:3000/projects/${id}`, {
+    await fetch(`https://my-final-portfolio-server.vercel.app/projects/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedData),

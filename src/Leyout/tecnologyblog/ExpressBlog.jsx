@@ -95,7 +95,7 @@ app.get("/", (req, res) => {
 
 // Start the server
 app.listen(3000, () => {
-  console.log("Server running at http://localhost:3000");
+  console.log("Server running at https://my-final-portfolio-server.vercel.app");
 });`}
           </pre>
 

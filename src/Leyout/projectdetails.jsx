@@ -8,7 +8,7 @@ const ProjectDetails = () => {
   const [project, setProject] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/projects/${id}`)
+    fetch(`https://my-final-portfolio-server.vercel.app/projects/${id}`)
       .then((res) => res.json())
       .then((data) => setProject(data))
       .catch((err) => console.error("Error fetching project:", err));

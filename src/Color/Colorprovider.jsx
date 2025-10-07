@@ -10,7 +10,7 @@ export const ColorProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:3000/colors")
+    fetch("https://my-final-portfolio-server.vercel.app/colors")
       .then((res) => res.json())
       .then((data) => {
         

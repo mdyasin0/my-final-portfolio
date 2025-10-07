@@ -11,13 +11,29 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-   
-    // console.log("Message sent:", formData);
-    setSubmitted(true);
-    setFormData({ name: "", email: "", message: "" });
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch("https://my-final-portfolio-server.vercel.app/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setSubmitted(true);
+      setFormData({ name: "", email: "", message: "" });
+    } else {
+      alert("Failed to send message. Try again!");
+    }
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    alert("Something went wrong. Please try again later.");
+  }
+};
 
   return (
     <section

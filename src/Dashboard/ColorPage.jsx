@@ -9,7 +9,7 @@ function ColorPage() {
 
   // Fetch colors from backend
   useEffect(() => {
-    fetch("http://localhost:3000/colors")
+    fetch("https://my-final-portfolio-server.vercel.app/colors")
       .then((res) => res.json())
       .then((data) => {
         if (data.length > 0) setColorData(data[0]);
@@ -23,7 +23,7 @@ function ColorPage() {
   if (!window.confirm("Are you sure to change the color?")) return;
 
   // API call to backend (PUT request)
-  fetch(`http://localhost:3000/colors/${colorData._id}/${theme}/${key}`, {
+  fetch(`https://my-final-portfolio-server.vercel.app/colors/${colorData._id}/${theme}/${key}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ newColor }), 

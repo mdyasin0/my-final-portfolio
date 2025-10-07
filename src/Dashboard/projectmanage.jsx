@@ -23,7 +23,7 @@ const ProjectsDashboard = () => {
   const [description, setDescription] = useState("");
 
   const loadProjects = async () => {
-    const res = await fetch("http://localhost:3000/projects");
+    const res = await fetch("https://my-final-portfolio-server.vercel.app/projects");
     const data = await res.json();
     setProjects(data);
   };
@@ -49,7 +49,7 @@ const ProjectsDashboard = () => {
       challenges,
     };
 
-    await fetch("http://localhost:3000/projects", {
+    await fetch("https://my-final-portfolio-server.vercel.app/projects", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newProject),
@@ -73,7 +73,7 @@ const ProjectsDashboard = () => {
 
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this project?")) return;
-    await fetch(`http://localhost:3000/projects/${id}`, { method: "DELETE" });
+    await fetch(`https://my-final-portfolio-server.vercel.app/projects/${id}`, { method: "DELETE" });
     loadProjects();
   };
 

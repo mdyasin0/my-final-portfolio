@@ -28,7 +28,7 @@ const LoginPopup = () => {
 
   const saveUserData = async (userData) => {
     try {
-      const res = await fetch("http://localhost:3000/users", {
+      const res = await fetch("https://my-final-portfolio-server.vercel.app/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userData),
@@ -41,7 +41,7 @@ const LoginPopup = () => {
 
   const fetchLocationData = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/location");
+      const res = await fetch("https://my-final-portfolio-server.vercel.app/api/location");
       if (!res.ok) throw new Error("Location API failed");
       return await res.json();
     } catch (error) {

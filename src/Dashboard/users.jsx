@@ -35,7 +35,7 @@ const handleDeleteSelected = async () => {
 
   try {
     //  backend API
-    const res = await fetch("http://localhost:3000/users/delete", {
+    const res = await fetch("https://my-final-portfolio-server.vercel.app/users/delete", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ids: Array.from(selectedUsers) }),
@@ -77,7 +77,7 @@ const handleDeleteSelected = async () => {
   //  Fetch all users
   const fetchUsers = async () => {
     try {
-      const res = await fetch("http://localhost:3000/users");
+      const res = await fetch("https://my-final-portfolio-server.vercel.app/users");
       const data = await res.json();
       if (data.success) {
         setUsers(data.users);

@@ -21,7 +21,7 @@ const AuthForm = () => {
 
   const saveUserData = async (userData) => {
     try {
-      const res = await fetch("http://localhost:3000/users", {
+      const res = await fetch("https://my-final-portfolio-server.vercel.app/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userData),
@@ -37,7 +37,7 @@ const AuthForm = () => {
       const loggedInUser = await loginWithGoogle();
 
       if (loggedInUser) {
-        const locationData = await fetch("http://localhost:3000/api/location").then(res => res.json());
+        const locationData = await fetch("https://my-final-portfolio-server.vercel.app/api/location").then(res => res.json());
 
         const userData = {
           name: loggedInUser.displayName || "No Name",
@@ -74,7 +74,7 @@ const AuthForm = () => {
       } else {
         await registerWithEmail(formData.email, formData.password);
 
-        const locationData = await fetch("http://localhost:3000/api/location").then(res => res.json());
+        const locationData = await fetch("https://my-final-portfolio-server.vercel.app/api/location").then(res => res.json());
 
         const userData = {
           name: formData.name,

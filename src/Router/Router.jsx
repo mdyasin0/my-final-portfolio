@@ -27,6 +27,7 @@ import ProjectsDashboard from "../Dashboard/projectmanage";
 import Projectupdate from "../Dashboard/ProjectDetails";
 import ProjectDetails from "../Leyout/projectdetails";
 import UserDashboard from "../Dashboard/users";
+import AdminProtectRoute from "../Protectsystem/AdminProtectRoute";
 
 
 const Router = createBrowserRouter([
@@ -68,6 +69,8 @@ const Router = createBrowserRouter([
         path: "/bloglayout",
         element: <BlogLayout />,
         children: [
+          
+             { index: true, element: <HtmlBlog /> },
           // Frontend
           { path: "html", element: <HtmlBlog /> },
           { path: "css", element: <CssBlog /> },
@@ -90,8 +93,12 @@ const Router = createBrowserRouter([
       },
       {
         path: "/dashboardlayout",
-        element: <DashboardLayout />,
+        element: (
+           <AdminProtectRoute>
+          <DashboardLayout />
+        </AdminProtectRoute>),
         children: [
+           { index: true, element: <ColorPage />},
           {
             path: "/dashboardlayout/colorpage",
             element: <ColorPage />,
