@@ -28,6 +28,7 @@ import Projectupdate from "../Dashboard/ProjectDetails";
 import ProjectDetails from "../Leyout/projectdetails";
 import UserDashboard from "../Dashboard/users";
 import AdminProtectRoute from "../Protectsystem/AdminProtectRoute";
+import ConnectedUserTable from "../Dashboard/Connecteduser";
 
 
 const Router = createBrowserRouter([
@@ -117,6 +118,9 @@ const Router = createBrowserRouter([
           },{
             path: "/dashboardlayout/userdashboard" ,
             element : <UserDashboard/>
+          },{
+            path : "/dashboardlayout/connectedusertable" ,
+            element : <ConnectedUserTable/> , 
           }
         ],
       },
